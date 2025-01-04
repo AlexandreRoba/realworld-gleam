@@ -1,24 +1,22 @@
-# realworld
+# ![RealWorld Example App](logo.png)
 
-[![Package Version](https://img.shields.io/hexpm/v/realworld)](https://hex.pm/packages/realworld)
-[![Hex Docs](https://img.shields.io/badge/hex-docs-ffaff3)](https://hexdocs.pm/realworld/)
+> ### [YOUR_FRAMEWORK] codebase containing real world examples (CRUD, auth, advanced patterns, etc) that adheres to the [RealWorld](https://github.com/gothinkster/realworld) spec and API.
 
-```sh
-gleam add realworld@1
-```
-```gleam
-import realworld
 
-pub fn main() {
-  // TODO: An example of the project in use
-}
-```
+### [Demo](https://demo.realworld.io/)&nbsp;&nbsp;&nbsp;&nbsp;[RealWorld](https://github.com/gothinkster/realworld)
 
-Further documentation can be found at <https://hexdocs.pm/realworld>.
 
-## Development
+This codebase was created to demonstrate a fully fledged backend application built with **Gleam** including CRUD operations, authentication, routing, pagination, and more.
 
-```sh
-gleam run   # Run the project
-gleam test  # Run the tests
-```
+We've gone to great lengths to adhere to the **Gleam** community styleguides & best practices.
+
+For more information on how to this works with other frontends/backends, head over to the [RealWorld](https://github.com/gothinkster/realworld) repo.
+
+
+# How it works
+
+> Describe the general architecture of your app here
+
+# Getting started
+
+> npm install, npm start, etc.
