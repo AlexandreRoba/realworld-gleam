@@ -1,25 +1,9 @@
 import gleam/dynamic/decode
-import gleam/http
 import gleam/json
 import gleam/result
 import wisp.{type Request, type Response}
 
-pub fn user_handler(req: Request) -> Response {
-  case wisp.path_segments(req) {
-    ["users"] -> {
-      use <- wisp.require_method(req, http.Post)
-      register(req)
-    }
-    ["users", "login"] -> {
-      use <- wisp.require_method(req, http.Post)
-      login(req)
-    }
-    ["user"] -> user(req)
-    _ -> wisp.not_found()
-  }
-}
-
-fn register(req: Request) -> Response {
+pub fn register(req: Request) -> Response {
   use json <- wisp.require_json(req)
   let result = {
     use data <- result.try(decode.run(json, registration_decoder()))
@@ -44,15 +28,15 @@ fn register(req: Request) -> Response {
   }
 }
 
-pub type RegistrationRequestJson {
+type RegistrationRequestJson {
   RegistrationRequestJson(user: UserRegistrationRequestJson)
 }
 
-pub type UserRegistrationRequestJson {
+type UserRegistrationRequestJson {
   UserRegistrationRequestJson(email: String, password: String, username: String)
 }
 
-pub fn registration_decoder() {
+fn registration_decoder() {
   let user_registration_decoder = {
     use email <- decode.field("email", decode.string)
     use password <- decode.field("password", decode.string)
@@ -63,22 +47,14 @@ pub fn registration_decoder() {
   decode.success(RegistrationRequestJson(user:))
 }
 
-fn login(_req: Request) -> Response {
+pub fn login(_req: Request) -> Response {
   todo
 }
 
-fn user(req: Request) -> Response {
-  case req.method {
-    http.Get -> get_user(req)
-    http.Put -> put_user(req)
-    _ -> wisp.method_not_allowed([http.Get, http.Post])
-  }
-}
-
-fn get_user(_req: Request) -> Response {
+pub fn get_user(_req: Request) -> Response {
   todo
 }
 
-fn put_user(_req: Request) -> Response {
+pub fn update_user(_req: Request) -> Response {
   todo
 }
